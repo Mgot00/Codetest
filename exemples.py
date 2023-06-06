@@ -1,4 +1,4 @@
-'''--------------------------------------------------------------------------'''
+'''----------------------------------------------------------------------------------------------------------------------------------------------------'''
 
 '''BACKUP: La funció 'backup_files' rep la ruta del directori origen i la del destí.'''
 
@@ -29,7 +29,7 @@ backup_directory = "/temp/copia_de_seguretat"
 backup_files(source_directory, backup_directory)
 
 
-'''--------------------------------------------------------------------------'''
+'''----------------------------------------------------------------------------------------------------------------------------------------------------'''
 
 '''DOMINI: Amb el mòdul 'whois' podem obtenir informació detallada del domini.'''
 
@@ -53,7 +53,7 @@ def get_domain_info(domain_name):
 domain_name = input("Introdueix el nom de domini: ")
 get_domain_info(domain_name)
 
-'''--------------------------------------------------------------------------'''
+'''----------------------------------------------------------------------------------------------------------------------------------------------------'''
 
 ''' BASE DE DADES: Es crea una connexió amb la base de dades, es crea una taula, s'inserten dades, es realitza una consulta i s'actualitza una entrada. Finalment, es tanca la connexió. '''
 
@@ -87,7 +87,7 @@ conn.commit()
 conn.close()
 
 
-'''--------------------------------------------------------------------------'''
+'''----------------------------------------------------------------------------------------------------------------------------------------------------'''
 
 '''MONITORITZACIÓ: Amb la llibreria 'psutil' podem obtenir informació de CPU, memòria i espai al disc. Com un agent de Nagios. I amb 'platform' tenim accés a informació del sistema operatiu.'''
 
@@ -130,4 +130,4 @@ print("Versió del sistema operatiu:", versio_sistema_operatiu)
 informacio_detallada = platform.uname()
 print("Informació detallada:", informacio_detallada)
 
-'''--------------------------------------------------------------------------'''
+'''----------------------------------------------------------------------------------------------------------------------------------------------------'''
