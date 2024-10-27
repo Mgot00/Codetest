@@ -1,0 +1,47 @@
+---
+- name: Playbook_Apache
+  hosts: 192.168.33.10
+  become: yes # Executar amb privilegis sudo.
+
+  vars:
+    http_port: 80 # Port que s'utilitzarà.
+    domain: example.com # Domini d'exemple.
+
+  tasks:
+    - name: Install apache2 # Utilitza el mòdul apt per instal·lar.
+      apt:
+        name: apache2
+        update_cache: yes
+        state: latest
+
+    - name: Ensure apache is running # Assegurar-se que Apache2 estigui en execució.
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Enable mod_rewrite # Habilitar el mòdul de 'mod_rewrite'.
+      apache2_module:
+        name: rewrite
+        state: present
+      notify: Restart apache2
+
+    - name: Configure Apache to listen on port {{ http_port }} # Configurem el port d'escolta.
+      lineinfile: 
+        dest: /etc/apache2/ports.conf 
+        regexp: "^Listen " 
+        line: "Listen {{ http_port }}" 
+        state: present
+      notify: Restart apache2
+
+    - name: Create virtual host file # Copiar fitxer de configuració 'virtualhost.conf'.
+      template: 
+        src: /tmp/virtualhost.conf 
+        dest: /etc/apache2/sites-available/{{ domain }}.conf
+      notify: Restart apache2
+
+  handlers:
+    - name: Restart apache2 # Reiniciar el servei d'Apache.
+      service:
+        name: apache2
+        state: restarted
