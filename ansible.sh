@@ -1,3 +1,4 @@
+---
 - name: Playbook_Apache
   hosts: 192.168.33.10 #Especifica l'amfitrió on s'executaran les tasques.
   sudo: yes #Executar amb privilegis sudo.
