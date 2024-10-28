@@ -7,8 +7,8 @@ def consulta_chatgpt(pregunta):
     resposta = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # Defineix el model 
         messages=[{"role": "user", "content": pregunta}],  # Estableix el missatge com a rol d'usuari
-        max_tokens=150,  # Longitud de la resposta
-        temperature=0.7  # Creativitat (0 = respostes precises, 1 = més creatives)
+        max_tokens=200,  # Longitud de la resposta
+        temperature=0.8  # Creativitat (0 = respostes precises, 1 = més creatives)
     )
     return resposta['choices'][0]['message']['content']  # Retorna només el text de la resposta
 
