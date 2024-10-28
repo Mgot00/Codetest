@@ -2,7 +2,7 @@ import openai  # Importa la llibreria d'OpenAI
 
 openai.api_key = "LA_TEVA_API_KEY"  # Configura la clau d'API que podem trobar al nostre perfil de ChatGPT
 
-def consulta_chatgpt(pregunta):
+def funcio_chatgpt(pregunta):
     # Crea una sol·licitud a l'API de ChatGPT
     resposta = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # Defineix el model 
@@ -14,4 +14,4 @@ def consulta_chatgpt(pregunta):
 
 # Pregunta i resposta
 pregunta = input("Introdueix la teva pregunta per a ChatGPT: ")
-print("ChatGPT:", consulta_chatgpt(pregunta))
+print("ChatGPT:", funcio_chatgpt(pregunta))
